@@ -1,0 +1,17 @@
+html
+	head
+		title Halaman Utama
+		link(rel="stylesheet" href="/style/slide.css")
+		script(src="/js/jquery.min.js")
+		script(src="/js/slide.js")
+	body
+		div.slideshow#slideshow
+			each item in data
+				div
+					div(style="position:relative")
+						div.box-img(style="background-image:url('" + item.image + "')")
+						div.box-caption
+							h1.title= item.title
+							div.clear
+							h2.desc= item.desc
+							div.clear

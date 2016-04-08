@@ -1,0 +1,51 @@
+@import url('roboto.css');
+
+body {
+    margin: 0px;
+}
+.slideshow { 
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+.slideshow > div { 
+    position: absolute;
+    width: 100%;
+    background-color: #089;
+    height: 100%;
+    display: none;
+}
+.slideshow .box-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.slideshow .box-caption {
+    position: absolute;
+    bottom: 0px;
+    font-family: 'Roboto Black';
+    bottom: 0%;
+}
+.slideshow .box-caption .title {
+    background-color: rgba(0,0,0,0.5);
+    padding:.5em;
+    color: #FFF;
+    float: left;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.clear {
+    clear: both;
+}
+.slideshow .box-caption .desc {
+    background-color: rgba(0,0,0,0.5);
+    padding:.5em;
+    color: #FFF;
+    float: left;
+    text-transform: uppercase;
+    margin:0;
+    margin-bottom:.5em;
+}
