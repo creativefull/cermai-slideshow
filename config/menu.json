@@ -1,0 +1,18 @@
+{
+	"_id" : "zzsderta",
+	"icon" : "fa-tachometer",
+	"menu_parent_id" : null,
+	"menu_title" : "Dashboard",
+	"menu_uri" : "/dashboard",
+	"order_point" : 1000,
+	"status" : 1
+}
+{
+	"_id" : "zzsdertb",
+	"icon" : "fa-desktop",
+	"menu_parent_id" : null,
+	"menu_title" : "Items",
+	"menu_uri" : "/items",
+	"order_point" : 1000,
+	"status" : 1
+}

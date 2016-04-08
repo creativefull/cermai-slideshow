@@ -9,6 +9,13 @@
 		},
 		"session" : {
 			"secret" : "cermaisession"
+		},
+		"connection" : {
+			"host" : "localhost",
+			"port" : 27017,
+			"db" : "cermai",
+			"user" : "",
+			"pwd" : ""
 		}
 	},
 	"production" : {
@@ -18,9 +25,16 @@
 		},
 		"page" : {
 			"login" : "/login"
-		}		
-	},
-	"session" : {
-		"secret" : "cermaisession"
+		},
+		"connection" : {
+			"host" : "localhost",
+			"port" : 27017,
+			"db" : "cermai",
+			"user" : "",
+			"pwd" : ""
+		},		
+		"session" : {
+			"secret" : "cermaisession"
+		}
 	}
 }

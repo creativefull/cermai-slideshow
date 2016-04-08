@@ -1,4 +1,4 @@
 {
 	"autoload" : false,
-	"helper" : ["cermai"]
+	"helper" : ["cermai","array"]
 }
