@@ -2,8 +2,6 @@ html
 	head
 		title Welcome
 		link(rel="stylesheet" href="/style/slide.css")
-		script(src="/js/jquery.min.js")
-		script(src="/js/slide.js")
 	body
 		div.slideshow#slideshow
 			each item in data
@@ -15,3 +13,16 @@ html
 							div.clear
 							h2.desc= item.desc
 							div.clear
+	script(src="/js/jquery.min.js")
+	script(src="/js/slide.js")
+	script(src="/js/socket.io.js")
+	script.
+		var socket = io.connect('http://127.0.0.1:7080');
+		socket.on('connect', function() {
+		})
+
+		socket.on("refreshPage", function(data) {
+			if (data.refresh == true) {
+				window.location.reload();		
+			}
+		})

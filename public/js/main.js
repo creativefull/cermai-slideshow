@@ -3,8 +3,9 @@ $(window).load(function() {
 	var indexHalaman = ['/home', '/dashboard', '/index', ''];
 	if (pageUrl == '' || pageUrl == '#_=_') {
 		pageUrl = '/dashboard';
+		window.history.pushState({path: pageUrl}, '', '#' + pageUrl);
+		window.location.reload();
 	}
-	console.log(indexHalaman.indexOf(pageUrl));
 	if (indexHalaman.indexOf(pageUrl) == -1) {
 		var url = pageUrl.slice(1);
 		$.ajax({

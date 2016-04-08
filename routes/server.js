@@ -54,5 +54,9 @@ function ServerHandler(db) {
 			});
 		})
 	}
+
+	this.home = function(req,res,next) {
+		res.render('server/home');
+	}
 }
 module.exports = ServerHandler;

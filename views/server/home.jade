@@ -13,4 +13,16 @@ div.page-content
 		h1 Dashboard
 			small
 				i(class="ace-icon fa fa-angle-double-right")
-				| overview &amp; stats
+				| &nbsp; overview &amp; stats
+	div.row
+		button.btn.btn-lg.btn-warning#refreshSlide(onclick="refresh()") Refresh Your Slideshow
+
+script.
+	var socket = io.connect('http://127.0.0.1:7080');
+	socket.on('connect', function() {
+		console.log("Connect Socket");
+	})
+
+	function refresh() {
+		socket.emit("refresh", { time : 0});
+	}
