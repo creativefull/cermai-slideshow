@@ -1,0 +1,22 @@
+#preview-img { 
+	background-color: #333;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-bottom: 10px;
+	text-align: center;
+	padding:50px 0px;
+	color: #FFF;
+}
+.img-list {
+	max-height: 400px;
+	overflow-y: auto;
+}
+.img-thumb {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 150px;
+	height: 150px;	
+}

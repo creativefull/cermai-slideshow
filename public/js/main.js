@@ -7,7 +7,6 @@ $(window).load(function() {
 	console.log(indexHalaman.indexOf(pageUrl));
 	if (indexHalaman.indexOf(pageUrl) == -1) {
 		var url = pageUrl.slice(1);
-		console.log(url);
 		$.ajax({
 			url : url,
 			type : 'GET',

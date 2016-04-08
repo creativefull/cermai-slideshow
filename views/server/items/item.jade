@@ -1,0 +1,113 @@
+div(class="breadcrumbs" id="breadcrumbs")
+	script(type="text/javascript").
+		try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+
+	ul(class="breadcrumb")
+		li
+			i(class="ace-icon fa fa-home home-icon")
+			a(href="/dashboard") Home
+		li(class="active") Item
+
+
+div.page-content
+	div(class="page-header")
+		h1 Items
+			small
+				i(class="ace-icon fa fa-angle-double-right") 
+				| &nbsp; View & Add Item
+
+	div.row
+		div.col-md-6
+			div#proses
+			form#tambahImage
+				div.form-group
+					label.label-control(for="caption") Caption
+					input.form-control#caption(type="text" autocomplete="off")
+				div.form-group
+					label.label-control(for="description") Description
+					textarea.form-control#description
+				div.form-group
+					div#preview-img This is your image
+					input.form-control(type="file" autocomplete="off" style="display:none" onchange='readURL(this)')#file
+					button.btn.btn-lg.btn-info(type="button" onclick="clickUpload()") Upload Images
+				div.form-group
+					button.btn.btn-lg.btn-success(type="submit") Submit
+		div.col-md-6
+			div.img-list
+				ul.ace-thumbnails.clearfix
+					each gambar in gambars
+						li
+							a(href="#" data-rel="colorbox" class="cboxElement")
+								div(alt="150x150" style="background-image:url('" + gambar.gambar + "')").img-thumb
+								div(class="text")
+									div(class="inner")
+										span= gambar.caption.toUpperCase()
+							div.tools.tools-bottom
+								a(href="#" onclick="edit('" + gambar._id + "')" title='Edit')
+									i.ace-icon.fa.fa-pencil
+								a(href="#" onclick="remove('" + gambar._id + "')" title='Remove')
+									i.ace-icon.fa.fa-trash-o
+
+script.
+	$("#tambahImage").submit(function() {
+		var form = new FormData();
+		var caption = $("#caption").val();
+		var description = $("#description").val();
+		var gambar = document.getElementById("file").files[0];
+
+		if (gambar == undefined) {
+			$("#proses").html("<p class=\"alert alert-danger\">Image Can't Be Empty</p>");
+			return false;
+		}
+
+		if (caption == '' || description == '') {
+			$("#proses").html("<p class=\"alert alert-danger\">Theres an empty data</p>");
+			return false;
+		}
+
+		form.append("caption", caption);
+		form.append("description", description);
+		form.append("published",1);
+		form.append("gambar", gambar);
+
+		$.ajax({
+			url : '/items/save',
+			type : 'POST',
+			data : form,
+			cache: false,
+			contentType: false,
+			processData: false,
+			beforeSend : function(msg) {
+				console.log("Sedang Mengirim Data");
+				$("#tambahImage button[type='submit']").attr("disabled","disabled");
+			},
+			success : function(msg) {
+				$("#tambahImage button[type='submit']").removeAttr("disabled");
+				console.log(msg);
+				if (msg == 'success') {
+					window.location.reload();
+				}
+				else {
+					$("#proses").html("<p class=\"alert alert-danger\">Kesalahan Server</p>");
+				}
+			}
+		});
+		return false;
+	})
+
+	function clickUpload() {
+		$("#file").trigger("click");
+		return false;
+	}
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			var gambar = e.target.result;
+			//- var gambar = document.getElementById('file').files[0]
+			$('#preview-img').css('background-image', 'url(' + e.target.result + ')');
+			$("#preview-img").text("");
+		}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}	
