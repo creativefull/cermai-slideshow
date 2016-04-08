@@ -7,4 +7,6 @@ module.exports = exports = function(cermai, db) {
 	cermai.get('/main', Server.index);
 	cermai.get('/items', Item.index);
 	cermai.post('/items/save', Item.simpan);
+	cermai.post('/items/save/edit', Item.simpanEdit);
+	cermai.post('/items/hapus', Item.delete);
 }

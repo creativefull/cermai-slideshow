@@ -1,5 +1,8 @@
 function Welcome(db) {
+	var ModelItem = db.collection('item');
+
 	this.index = function(req,res,next) {
+		// ModelItem.find({published : 1})
 		var data = [{
 			image : "http://cdn.wonderfulengineering.com/wp-content/uploads/2014/01/Technology-Wallpaper.jpg",
 			title : "LAN RJ45",

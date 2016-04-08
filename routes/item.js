@@ -31,6 +31,7 @@ function ItemHandler(db) {
 				if (err)  return res.json({gambar : '', hasil : 0});
 				fs.writeFile(tempat_file+'/public/img/'+id+"_"+img.originalFilename, data_gambar, function (err){
 					var data = {
+						_id : id,
 						caption:caption,
 						desc:desc,
 						published:p,
@@ -50,6 +51,26 @@ function ItemHandler(db) {
 				});
 			});
 		});
+	}
+
+	this.simpanEdit = function(req,res,next) {
+		var data = req.body;
+		var dataUpdate = {
+			caption : data.caption,
+			desc : data.desc
+		}
+		ModelItem.update({_id : data.id}, { $set : dataUpdate}, function(err, hasil) {
+			if (err) console.error(err);
+			res.json("success");
+		})
+	}
+
+	this.delete = function(req,res,next) {
+		var data = req.body;
+		ModelItem.update({_id : data.id}, { $set : {published : "0"}}, function(err, hasil) {
+			if (err) console.error(err);
+			res.json("success");			
+		})
 	}
 }
 module.exports = ItemHandler;
